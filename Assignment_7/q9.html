@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Event-Driven Background Color Changer</title>
+</head>
+<body>
+    <h1>Event-Driven Background Color Changer</h1>
+    <button id="red-button">Red</button>
+    <button id="green-button">Green</button>
+    <button id="blue-button">Blue</button>
+    <button id="random-button">Random</button>
+
+    <script>
+        document.getElementById('red-button').addEventListener('click', () => {
+            document.body.style.backgroundColor = 'red';
+        });
+
+        document.getElementById('green-button').addEventListener('click', () => {
+            document.body.style.backgroundColor = 'green';
+        });
+
+        document.getElementById('blue-button').addEventListener('click', () => {
+            document.body.style.backgroundColor = 'blue';
+        });
+
+        document.getElementById('random-button').addEventListener('click', () => {
+            let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+        });
+    </script>
+</body>
+</html>
