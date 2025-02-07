@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Guess the Number Game</title>
+</head>
+<body>
+    <h1>Guess the Number Game</h1>
+    <input type="number" id="guess" placeholder="Enter your guess">
+    <button id="submit">Submit</button>
+    <p id="hint"></p>
+    <p id="result"></p>
+
+    <script>
+        let numberToGuess = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        document.getElementById('submit').addEventListener('click', () => {
+            let guess = parseInt(document.getElementById('guess').value);
+            attempts++;
+
+            if (attempts > 5) {
+                document.getElementById('result').innerHTML = `You failed to guess the number in 5 attempts! The correct number was ${numberToGuess}.`;
+                document.getElementById('submit').disabled = true;
+            } else if (guess === numberToGuess) {
+                document.getElementById('result').innerHTML = `Congratulations! You guessed the number in ${attempts} attempts!`;
+                document.getElementById('submit').disabled = true;
+            } else if (guess < numberToGuess) {
+                document.getElementById('hint').innerHTML = 'Too low!';
+            } else {
+                document.getElementById('hint').innerHTML = 'Too high!';
+            }
+        });
+    </script>
+</body>
+</html>
