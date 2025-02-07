@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>FizzBuzz Challenge</title>
+</head>
+<body>
+    <h1>FizzBuzz Challenge</h1>
+    <button id="start">Start</button>
+    <div id="output"></div>
+    <script>
+        document.getElementById('start').addEventListener('click', () => {
+            let output = '';
+            for (let i = 1; i <= 50; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    output += 'FizzBuzz<br>';
+                } else if (i % 3 === 0) {
+                    output += 'Fizz<br>';
+                } else if (i % 5 === 0) {
+                    output += 'Buzz<br>';
+                } else {
+                    output += i + '<br>';
+                }
+            }
+            document.getElementById('output').innerHTML = output;
+        });
+
+        document.getElementById('start').addEventListener('click', () => {
+            let customRules = prompt('Enter custom rules (e.g., "3,Fizz;5,Buzz")');
+            let rules = customRules.split(';');
+            let output = '';
+            for (let i = 1; i <= 50; i++) {
+                let result = '';
+                for (let rule of rules) {
+                    let [divisor, word] = rule.split(',');
+                    if (i % parseInt(divisor) === 0) {
+                        result += word;
+                    }
+                }
+                if (result === '') {
+                    output += i + '<br>';
+                } else {
+                    output += result + '<br>';
+                }
+            }
+            document.getElementById('output').innerHTML = output;
+        });
+    </script>
+</body>
+</html>
