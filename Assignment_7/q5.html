@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Character Counter</title>
+</head>
+<body>
+    <h1>Character Counter</h1>
+    <textarea id="input" placeholder="Enter some text"></textarea>
+    <p id="char-count"></p>
+    <p id="word-count"></p>
+    <script>
+        document.getElementById('input').addEventListener('input', () => {
+            let input = document.getElementById('input').value;
+            let charCount = input.length;
+            let wordCount = input.trim().split(/\s+/).length;
+
+            document.getElementById('char-count').innerHTML = 'Character count: ' + charCount;
+            document.getElementById('word-count').innerHTML = 'Word count: ' + wordCount;
+        });
+
+        document.getElementById('input').addEventListener('input', () => {
+            let input = document.getElementById('input').value;
+            let words = input.trim().split(/\s+/);
+            let wordCounts = {};
+
+            for (let word of words) {
+                if (wordCounts[word]) {
+                    wordCounts[word]++;
+                } else {
+                    wordCounts[word] = 1;
+                }
+            }
+
+            let repeatedWords = Object.keys(wordCounts).filter(word => wordCounts[word] > 1);
+
+            let highlightedText = input;
+            for (let word of repeatedWords) {
+                highlightedText = highlightedText.replace(new RegExp(word, 'g'), `<span style="background-color: yellow">${word}</span>`);
+            }
+
+            document.getElementById('input').innerHTML = highlightedText;
+        });
+    </script>
+</body>
+</html>
