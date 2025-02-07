@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Sort an Array Without Using the sort() Method</title>
+</head>
+<body>
+    <h1>Sort an Array Without Using the sort() Method</h1>
+    <input type="text" id="array" placeholder="Enter an array:)">
+    <button id="sort-ascending">Sort Ascending</button>
+    <p id="sorted-ascending"></p>
+    <button id="sort-descending">Sort Descending</button>
+    <p id="sorted-descending"></p>
+
+    <script>
+        function bubbleSort(array, order) {
+            for (let i = 0; i < array.length; i++) {
+                for (let j = 0; j < array.length - i - 1; j++) {
+                    if ((order === 'ascending' && array[j] > array[j + 1]) || (order === 'descending' && array[j] < array[j + 1])) {
+                        let temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+            return array;
+        }
+
+        document.getElementById('sort-ascending').addEventListener('click', () => {
+            let array = document.getElementById('array').value.split(',').map(Number);
+            let sortedArray = bubbleSort(array, 'ascending');
+
+            document.getElementById('sorted-ascending').innerHTML = 'Sorted Array (Ascending): ' + sortedArray.join(', ');
+        });
+
+        document.getElementById('sort-descending').addEventListener('click', () => {
+            let array = document.getElementById('array').value.split(',').map(Number);
+            let sortedArray = bubbleSort(array, 'descending');
+
+            document.getElementById('sorted-descending').innerHTML = 'Sorted Array (Descending): ' + sortedArray.join(', ');
+        });
+    </script>
+</body>
+</html>
