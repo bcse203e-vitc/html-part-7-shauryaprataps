@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Find the Second Largest Number</title>
+</head>
+<body>
+    <h1>Find the Second Largest Number</h1>
+    <input type="text" id="array" placeholder="Enter an array (e.g., 1,2,3,4,5)">
+    <button id="find-second-largest">Find Second Largest</button>
+    <p id="second-largest"></p>
+    <button id="find-third-largest">Find Third Largest</button>
+    <p id="third-largest"></p>
+
+    <script>
+        document.getElementById('find-second-largest').addEventListener('click', () => {
+            let array = document.getElementById('array').value.split(',').map(Number);
+            array.sort((a, b) => a - b);
+            let secondLargest = array[array.length - 2];
+
+            document.getElementById('second-largest').innerHTML = 'Second Largest: ' + secondLargest;
+        });
+
+        document.getElementById('find-third-largest').addEventListener('click', () => {
+            let array = document.getElementById('array').value.split(',').map(Number);
+            array.sort((a, b) => a - b);
+            let thirdLargest = array[array.length - 3];
+
+            document.getElementById('third-largest').innerHTML = 'Third Largest: ' + thirdLargest;
+        });
+    </script>
+</body>
+</html>
