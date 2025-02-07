@@ -1,0 +1,38 @@
+
+<html>
+<head>
+    <title>Find Duplicates</title>
+</head>
+<body>
+    <h1>Find Duplicates</h1>
+    <input type="text" id="array" placeholder="Enter an array (e.g., 1,2,3,4,5,2,3)">
+    <button id="find-duplicates">Find Duplicates</button>
+    <p id="duplicates"></p>
+    <button id="remove-duplicates">Remove Duplicates</button>
+    <p id="unique-array"></p>
+
+    <script>
+        document.getElementById('find-duplicates').addEventListener('click', () => {
+            let array = document.getElementById('array').value.split(',').map(Number);
+            let duplicates = [];
+
+            for (let i = 0; i < array.length; i++) {
+                for (let j = i + 1; j < array.length; j++) {
+                    if (array[i] === array[j] && !duplicates.includes(array[i])) {
+                        duplicates.push(array[i]);
+                    }
+                }
+            }
+
+            document.getElementById('duplicates').innerHTML = 'Duplicates: ' + duplicates.join(', ');
+        });
+
+        document.getElementById('remove-duplicates').addEventListener('click', () => {
+            let array = document.getElementById('array').value.split(',').map(Number);
+            let uniqueArray = [...new Set(array)];
+
+            document.getElementById('unique-array').innerHTML = 'Unique Array: ' + uniqueArray.join(', ');
+        });
+    </script>
+</body>
+</html>
